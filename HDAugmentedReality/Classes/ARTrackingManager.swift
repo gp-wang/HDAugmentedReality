@@ -403,7 +403,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
         }
         else if deviceOrientation == CLDeviceOrientation.portraitUpsideDown
         {
-            angle = atan2(-self.previousAcceleration.y, self.previousAcceleration.z)
+            angle = atan2(-self.previousAcceleration.y, self.previousAcceleration.z)
         }
         else if deviceOrientation == CLDeviceOrientation.landscapeLeft
         {
@@ -426,7 +426,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
         if let deviceMotion = motionManager.deviceMotion {
             //print(deviceMotion)
             print(" pitch: \(deviceMotion.attitude.pitch), roll: \(deviceMotion.attitude.roll),yaw: \(deviceMotion.attitude.yaw)")
-            self.filteredPitch = deviceMotion.attitude.pitch¯
+            self.filteredPitch = deviceMotion.attitude.pitch
         }
         
         
