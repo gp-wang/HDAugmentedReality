@@ -375,6 +375,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
     /// Returns filtered(low-pass) pitch in degrees. -90(looking down), 0(looking straight), 90(looking up)
     internal func filterPitch()
     {
+        /*
         guard self.debugPitch == nil else { return }
         guard let accelerometerData = self.motionManager.accelerometerData else { return }
         let acceleration: CMAcceleration = accelerometerData.acceleration
@@ -418,8 +419,17 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
         if(angle > 180) { angle -= 360 }
 
         // Even more filtering, not sure if really needed //@TODO
-        self.filteredPitch = (self.filteredPitch + angle) / 2.0
-        print("You are using Gaopeng's Branch")
+       self.filteredPitch = (self.filteredPitch + angle) / 2.0
+         */
+        
+        if let deviceMotion = motionManager.deviceMotion {
+            //print(deviceMotion)
+            print(" pitch: \(deviceMotion.attitude.pitch), roll: \(deviceMotion.attitude.roll),yaw: \(deviceMotion.attitude.yaw)")
+            self.filteredPitch = deviceMotion.attitude.pitch
+        }
+        
+        
+
     }
 
     
