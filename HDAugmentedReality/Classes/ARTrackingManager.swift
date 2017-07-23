@@ -426,7 +426,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
         if let deviceMotion = motionManager.deviceMotion {
             //print(deviceMotion)
             print(" pitch: \(deviceMotion.attitude.pitch), roll: \(deviceMotion.attitude.roll),yaw: \(deviceMotion.attitude.yaw)")
-            self.filteredPitch = deviceMotion.attitude.pitch * 360 / (2 * Double.pi) //gw: in degrees
+            self.filteredPitch = deviceMotion.attitude.roll * 360 / (2 * Double.pi) //gw: in degrees
         }
         
         
@@ -481,7 +481,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
         if let deviceMotion = motionManager.deviceMotion {
             //print(deviceMotion)
             //print(" pitch: \(deviceMotion.attitude.pitch), roll: \(deviceMotion.attitude.roll),yaw: \(deviceMotion.attitude.yaw)")
-            self.self.filteredHeading = deviceMotion.attitude.roll * 360 / (2 * Double.pi)
+            self.self.filteredHeading = deviceMotion.attitude.pitch * 360 / (2 * Double.pi)
         }
     }
 
