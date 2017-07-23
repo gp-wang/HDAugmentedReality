@@ -187,6 +187,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
         
         // Start motion and location managers
         self.motionManager.startAccelerometerUpdates()
+        self.motionManager.startDeviceMotionUpdates()
         self.locationManager.startUpdatingHeading()
         self.locationManager.startUpdatingLocation()
         self.tracking = true
@@ -425,7 +426,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
         if let deviceMotion = motionManager.deviceMotion {
             //print(deviceMotion)
             print(" pitch: \(deviceMotion.attitude.pitch), roll: \(deviceMotion.attitude.roll),yaw: \(deviceMotion.attitude.yaw)")
-            self.filteredPitch = deviceMotion.attitude.pitch
+            self.filteredPitch = deviceMotion.attitude.pitch¯
         }
         
         
