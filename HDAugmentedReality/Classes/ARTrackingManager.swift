@@ -155,7 +155,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
     /**
      Starts location and motion manager
      
-     - Parameter notifyFailure:     If true, will call arTrackingManager:didFailToFindLocationAfter: if location is not found.
+     - Parameter notifyFailure:     If true, will call arTrackingManager:didFailToFindLocationAfter: if location is not found.https://github.com/gp-wang/HDAugmentedReality.git
      */
     public func startTracking(notifyLocationFailure: Bool = false)
     {
@@ -419,6 +419,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
 
         // Even more filtering, not sure if really needed //@TODO
         self.filteredPitch = (self.filteredPitch + angle) / 2.0
+        print("You are using Gaopeng's Branch")
     }
 
     
