@@ -426,7 +426,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
         if let deviceMotion = motionManager.deviceMotion {
             //print(deviceMotion)
             print(" pitch: \(deviceMotion.attitude.pitch), roll: \(deviceMotion.attitude.roll),yaw: \(deviceMotion.attitude.yaw)")
-            self.filteredPitch = deviceMotion.attitude.pitch
+            self.filteredPitch = deviceMotion.attitude.pitch * 360 / (2 * Double.pi) //gw: in degrees
         }
         
         
@@ -436,9 +436,9 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
     
     internal func filterHeading()
     {
-        let headingFilterFactor = _headingFilterFactor
+        /*let headingFilterFactor = _headingFilterFactor
         let previousFilteredHeading = self.filteredHeading
-        let newHeading = self.debugHeading ?? self.heading
+        let newHeading = self.debugHeading ?? self.heading*/
 
         /*
          Low pass filter on heading cannot be done by using regular formula because our input(heading)
@@ -461,6 +461,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
          self.filteredHeading = normalizeDegree(self.filteredHeading)
          */
         
+        /*
         var newHeadingTransformed = newHeading
         if fabs(newHeading - previousFilteredHeading) > 180
         {
@@ -474,7 +475,14 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
             }
         }
         self.filteredHeading = (newHeadingTransformed * headingFilterFactor) + (previousFilteredHeading  * (1.0 - headingFilterFactor))
-        self.filteredHeading = normalizeDegree(self.filteredHeading)
+        self.filteredHeading = normalizeDegree(self.filteredHeading)*/
+        
+        
+        if let deviceMotion = motionManager.deviceMotion {
+            //print(deviceMotion)
+            //print(" pitch: \(deviceMotion.attitude.pitch), roll: \(deviceMotion.attitude.roll),yaw: \(deviceMotion.attitude.yaw)")
+            self.self.filteredHeading = deviceMotion.attitude.roll * 360 / (2 * Double.pi)
+        }
     }
 
     //@TODO rename to heading
