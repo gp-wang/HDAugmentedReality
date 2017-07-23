@@ -51,7 +51,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
      Filter(Smoothing) factor for heading in range 0-1. It affects horizontal movement of annotaion views. The lower the value the bigger the smoothing.
      Value of 1 means no smoothing, should be greater than 0. Default value is 0.05
      */
-    public var headingFilterFactor: Double = 1 //0.05
+    public var headingFilterFactor: Double = 0.05
     private var _headingFilterFactor: Double = 0.05
     
     
@@ -59,7 +59,7 @@ public class ARTrackingManager: NSObject, CLLocationManagerDelegate
      Filter(Smoothing) factor for pitch in range 0-1. It affects vertical movement of annotaion views. The lower the value the bigger the smoothing.
      Value of 1 means no smoothing, should be greater than 0. Default value is 0.05
      */
-    public var pitchFilterFactor: Double = 1 //0.05
+    public var pitchFilterFactor: Double = 0.05
     
     //===== Internal variables
     /// Delegate
